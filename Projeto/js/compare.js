@@ -4,9 +4,18 @@ let carArr = [];
 
 class Car {
    
-
     constructor(nome, preco, alturaCacamba, alturaVeiculo, alturaSolo, capacidadeCarga, motor, potencia, volumeCacamba, roda, image){
-       
+       this.nome = nome;
+       this.preco = preco;
+       this.alturaCacamba = alturaCacamba;
+       this.alturaVeiculo = alturaVeiculo;
+       this.alturaSolo = alturaSolo;
+       this.capacidadeCarga = capacidadeCarga;
+       this.motor = motor;
+       this.potencia = potencia;
+       this.volumeCacamba = volumeCacamba;
+       this.roda = roda;
+       this.image = image;
     }
 } 
 
@@ -23,14 +32,32 @@ function SetCarToCompare(el, carClass) {
    
     if(carClass instanceof Car){       
         if(el.checked){
-                
+            if(carArr.length >= 2){
+                el.checked == false;
+                alert("Você deve comparar apenas 2 veículos por vez!");
+                return;
+            }          
+            
+            if(GetCarArrPosition(carArr), carClass === -1){
+                carArr.push(carClass);
+            }
             
         } else {
-          
+            const index = GetCarArrPosition(carArr, carClass);
+            if(index !== -1){
+                carArr.splice(index, 1);
+            }
         } 
+        
+        
+
     } else {
         throw "You need set a Car Class";
     }
+}
+
+function botaoComparar(){
+    const compareBtn = document.querySelector("button[onclick='ShowCompare()']")
 }
 
 function ShowCompare() {
