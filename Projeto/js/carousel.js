@@ -15,7 +15,6 @@ class Carousel {
         this.uri = uri;
     }
 
-
     static Start(arr) {
         if (arr && arr.length > 0) {
             Carousel._sequence = 0;
